@@ -35,6 +35,13 @@ dependencies {
     testImplementation("com.github.javafaker:javafaker:1.0.2")
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
